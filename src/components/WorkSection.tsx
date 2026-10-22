@@ -296,7 +296,7 @@ function ProjectLightbox({
   );
 }
 
-/* ── Continuous Running Perimeter Laser Border with Increased Stroke ── */
+/* ── Continuous Running Perimeter Laser Border with Premium Razor-Thin Stroke ── */
 function TileLaserBorder({ 
   laserColor, 
   laserSecondary, 
@@ -307,7 +307,7 @@ function TileLaserBorder({
   index: number;
 }) {
   const animDelay = `${index * -0.9}s`;
-  const headDelay = `calc(${animDelay} - 0.45s)`;
+  const headDelay = `calc(${animDelay} - 0.35s)`;
 
   return (
     <div className="absolute inset-0 pointer-events-none rounded-2xl overflow-visible z-20">
@@ -315,17 +315,7 @@ function TileLaserBorder({
         className="w-full h-full overflow-visible"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <defs>
-          <filter id={`laser-bloom-${index}`} x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="6" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
-        {/* Layer 1: Ambient Radiant Bloom Aura (Luminous glow spreading inward & outward) */}
+        {/* Layer 1: Delicate Atmospheric Glow Aura (Soft, subtle optical dispersion) */}
         <rect
           x="0"
           y="0"
@@ -335,18 +325,18 @@ function TileLaserBorder({
           ry="16"
           fill="none"
           stroke={laserSecondary}
-          strokeWidth="11"
+          strokeWidth="4"
           strokeLinecap="round"
-          strokeDasharray="28 72"
+          strokeDasharray="22 78"
           pathLength="100"
-          className="animate-laser-perimeter opacity-65 dark:opacity-85"
+          className="animate-laser-perimeter opacity-40 dark:opacity-60"
           style={{
             animationDelay: animDelay,
-            filter: 'blur(7px)',
+            filter: 'blur(3.5px)',
           }}
         />
 
-        {/* Layer 2: Main Bold Colored Laser Beam (Thick stroke per user request: strokeWidth=4.5) */}
+        {/* Layer 2: Precision Razor Laser Filament (Sleek 1.75px colored stroke with tight optical halo) */}
         <rect
           x="0"
           y="0"
@@ -356,18 +346,18 @@ function TileLaserBorder({
           ry="16"
           fill="none"
           stroke={laserColor}
-          strokeWidth="4.5"
+          strokeWidth="1.75"
           strokeLinecap="round"
-          strokeDasharray="22 78"
+          strokeDasharray="18 82"
           pathLength="100"
           className="animate-laser-perimeter opacity-95 dark:opacity-100"
           style={{
             animationDelay: animDelay,
-            filter: `drop-shadow(0 0 6px ${laserSecondary})`,
+            filter: `drop-shadow(0 0 2.5px ${laserColor}) drop-shadow(0 0 5px ${laserSecondary})`,
           }}
         />
 
-        {/* Layer 3: Solid Intense Laser Core */}
+        {/* Layer 3: Concentrated Saturated Laser Beam */}
         <rect
           x="0"
           y="0"
@@ -377,9 +367,9 @@ function TileLaserBorder({
           ry="16"
           fill="none"
           stroke={laserSecondary}
-          strokeWidth="3"
+          strokeWidth="1.2"
           strokeLinecap="round"
-          strokeDasharray="18 82"
+          strokeDasharray="14 86"
           pathLength="100"
           className="animate-laser-perimeter opacity-100"
           style={{
@@ -387,7 +377,7 @@ function TileLaserBorder({
           }}
         />
 
-        {/* Layer 4: Blazing White-Hot Leading Head (Laser comet tip) */}
+        {/* Layer 4: Needle-Sharp White-Hot Focal Spark (Ultra-fine 0.85px leading tip) */}
         <rect
           x="0"
           y="0"
@@ -397,9 +387,9 @@ function TileLaserBorder({
           ry="16"
           fill="none"
           stroke="#ffffff"
-          strokeWidth="2.2"
+          strokeWidth="0.85"
           strokeLinecap="round"
-          strokeDasharray="10 90"
+          strokeDasharray="7 93"
           pathLength="100"
           className="animate-laser-perimeter opacity-100"
           style={{
