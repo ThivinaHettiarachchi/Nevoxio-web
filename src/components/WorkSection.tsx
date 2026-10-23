@@ -446,7 +446,7 @@ function ProjectCard({
           </div>
 
           {/* Browser Top Bar Mockup */}
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-border-default/60 bg-bg-secondary/60">
+          <div className="flex items-center justify-between px-3.5 py-1.5 border-b border-border-default/60 bg-bg-secondary/60">
             <div className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/90" />
               <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/90" />
@@ -454,24 +454,24 @@ function ProjectCard({
             </div>
 
             {/* Mini URL pill */}
-            <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-bg-primary/90 border border-border-default/60 text-[10px] font-mono text-text-muted truncate max-w-[170px]">
-              <Lock size={10} className="text-emerald-500 shrink-0" />
+            <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-bg-primary/90 border border-border-default/60 text-[9.5px] font-mono text-text-muted truncate max-w-[160px]">
+              <Lock size={9} className="text-emerald-500 shrink-0" />
               <span className="truncate">{project.displayUrl}</span>
             </div>
 
             {/* Status Badge */}
-            <span className="inline-flex items-center gap-1 text-[9px] font-mono font-medium px-2 py-0.5 rounded-full border bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
+            <span className="inline-flex items-center gap-1 text-[8.5px] font-mono font-medium px-1.5 py-0.5 rounded-full border bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               {project.badge}
             </span>
           </div>
 
-          {/* Production Screenshot Viewport - Clicking picture redirects directly to live site */}
+          {/* Production Screenshot Viewport - Compact Aspect Ratio */}
           <a
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative block w-full h-[220px] sm:h-[240px] overflow-hidden bg-bg-secondary/30 group/viewport cursor-pointer"
+            className="relative block w-full h-[165px] sm:h-[180px] overflow-hidden bg-bg-secondary/30 group/viewport cursor-pointer"
             aria-label={`Open ${project.title} live system in new tab`}
           >
             <Image
@@ -488,7 +488,7 @@ function ProjectCard({
 
             {/* Floating Live Site Action Pill on Hover */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/viewport:opacity-100 transition-all duration-300 bg-black/25 backdrop-blur-[2px]">
-              <span className="px-4 py-2 rounded-full bg-white text-neutral-950 dark:bg-white dark:text-neutral-900 text-xs font-semibold shadow-xl border border-white/20 transition-transform duration-300 transform scale-95 group-hover/viewport:scale-100 inline-flex items-center gap-1.5 pointer-events-none">
+              <span className="px-3.5 py-1.5 rounded-full bg-white text-neutral-950 dark:bg-white dark:text-neutral-900 text-xs font-semibold shadow-xl border border-white/20 transition-transform duration-300 transform scale-95 group-hover/viewport:scale-100 inline-flex items-center gap-1.5 pointer-events-none">
                 <span>Visit Live Site</span>
                 <ExternalLink size={12} />
               </span>
@@ -496,11 +496,11 @@ function ProjectCard({
           </a>
 
           {/* Content Body */}
-          <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+          <div className="p-4 sm:p-5 flex flex-col justify-between flex-grow">
             <div>
               {/* Category Pill & Quick Direct Link */}
-              <div className="flex items-center justify-between mb-3.5">
-                <span className={`text-[0.6875rem] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border ${project.accentLight} dark:${project.accentDark}`}>
+              <div className="flex items-center justify-between mb-2">
+                <span className={`text-[0.625rem] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full border ${project.accentLight} dark:${project.accentDark}`}>
                   {project.typeLabel}
                 </span>
 
@@ -508,34 +508,34 @@ function ProjectCard({
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-7 h-7 rounded-full border border-border-default flex items-center justify-center
+                  className="w-6 h-6 rounded-full border border-border-default flex items-center justify-center
                     text-text-muted hover:text-text-primary hover:border-text-primary
                     hover:bg-text-primary hover:text-bg-primary transition-all duration-300"
                   aria-label={`Open ${project.title} live system`}
                 >
-                  <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </div>
 
               {/* Title & Tagline */}
-              <h3 className="text-text-primary text-xl font-bold tracking-tight mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+              <h3 className="text-text-primary text-lg sm:text-[19px] font-bold tracking-tight mb-0.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                 {project.title}
               </h3>
-              <p className="text-xs font-serif italic text-text-secondary mb-3">
+              <p className="text-[11.5px] font-serif italic text-text-secondary mb-2">
                 {project.tagline}
               </p>
 
               {/* Expandable System Description */}
-              <div className="mb-4">
+              <div className="mb-2.5">
                 <button
                   type="button"
                   onClick={() => setIsExpanded((prev) => !prev)}
-                  className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-text-muted hover:text-text-primary py-1 px-2.5 rounded-full bg-bg-secondary/70 hover:bg-bg-secondary border border-border-default hover:border-border-strong transition-all duration-200 cursor-pointer select-none active:scale-95 group/desc-btn"
+                  className="inline-flex items-center gap-1.5 text-[10.5px] font-mono font-medium text-text-muted hover:text-text-primary py-0.5 px-2.5 rounded-full bg-bg-secondary/70 hover:bg-bg-secondary border border-border-default hover:border-border-strong transition-all duration-200 cursor-pointer select-none active:scale-95 group/desc-btn"
                   aria-expanded={isExpanded}
                 >
                   <span className={`w-1.5 h-1.5 rounded-full transition-colors ${isExpanded ? 'bg-indigo-500 shadow-[0_0_8px_#6366f1]' : 'bg-text-muted/60'}`} />
                   <span>{isExpanded ? 'Hide Description' : 'View Description'}</span>
-                  <ChevronDown size={12} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-text-primary' : 'text-text-muted'}`} />
+                  <ChevronDown size={11} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-text-primary' : 'text-text-muted'}`} />
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -543,12 +543,12 @@ function ProjectCard({
                     <motion.div
                       key="desc-body"
                       initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                      animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+                      animate={{ opacity: 1, height: 'auto', marginTop: 6 }}
                       exit={{ opacity: 0, height: 0, marginTop: 0 }}
                       transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="text-text-secondary text-xs sm:text-[13px] leading-relaxed p-3 rounded-xl bg-bg-secondary/60 border border-border-default/60 text-left">
+                      <p className="text-text-secondary text-xs sm:text-[12.5px] leading-relaxed p-2.5 rounded-xl bg-bg-secondary/60 border border-border-default/60 text-left">
                         {project.description}
                       </p>
                     </motion.div>
@@ -559,17 +559,17 @@ function ProjectCard({
 
             <div>
               {/* Key Metrics / Client Line */}
-              <div className="flex items-center gap-2 mb-4 text-[11px] font-mono text-text-muted border-t border-border-default/60 pt-3">
-                <Award size={12} className="text-amber-500 shrink-0" />
+              <div className="flex items-center gap-1.5 mb-2.5 text-[10.5px] font-mono text-text-muted border-t border-border-default/60 pt-2">
+                <Award size={11} className="text-amber-500 shrink-0" />
                 <span className="truncate">{project.metrics}</span>
               </div>
 
               {/* Tech Stack Pills */}
-              <div className="flex flex-wrap gap-1.5 mb-5">
+              <div className="flex flex-wrap gap-1.5 mb-3">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[0.6875rem] font-medium px-2.5 py-1 rounded-full
+                    className="text-[10px] sm:text-[10.5px] font-medium px-2 py-0.5 rounded-full
                       bg-bg-secondary text-text-secondary border border-border-default group-hover:border-border-strong transition-colors"
                   >
                     {tag}
@@ -582,13 +582,13 @@ function ProjectCard({
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pt-3.5 border-t border-border-default/60 flex items-center justify-between text-xs font-semibold text-text-muted group-hover:text-text-primary transition-colors cursor-pointer"
+                className="pt-2.5 border-t border-border-default/60 flex items-center justify-between text-[11.5px] font-semibold text-text-muted group-hover:text-text-primary transition-colors cursor-pointer"
               >
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                   Launch Live Experience
                 </span>
-                <ExternalLink size={13} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+                <ExternalLink size={12} className="opacity-60 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
           </div>
