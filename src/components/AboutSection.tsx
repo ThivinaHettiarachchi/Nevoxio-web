@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useScrollReveal } from '@/hooks/useAnimations';
 import { CheckCircle2, Award, Zap, Code2 } from 'lucide-react';
+import SectionBackground from './SectionBackground';
 
 const PRINCIPLES = [
   {
@@ -36,7 +37,8 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="section-spacing-lg relative border-t border-border-default bg-bg-primary">
-      <div className="container-premium">
+      <SectionBackground variant="about" />
+      <div className="container-premium relative z-10">
         {/* Eyebrow with Fine Horizontal Lines */}
         <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
           <span className="w-8 sm:w-12 h-[1px] bg-border-strong opacity-60" />

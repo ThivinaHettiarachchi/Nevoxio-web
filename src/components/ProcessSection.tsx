@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '@/hooks/useAnimations';
 import { Search, PenTool, Code, Rocket, CheckCircle } from 'lucide-react';
+import SectionBackground from './SectionBackground';
 
 const STEPS = [
   {
@@ -50,7 +51,8 @@ export default function ProcessSection() {
 
   return (
     <section id="process" className="section-spacing-lg relative bg-bg-secondary/40 border-t border-border-default">
-      <div className="container-premium">
+      <SectionBackground variant="process" />
+      <div className="container-premium relative z-10">
         {/* Header */}
         <div ref={headerRef} className="text-center max-w-xl mx-auto mb-16 lg:mb-20">
           <motion.div

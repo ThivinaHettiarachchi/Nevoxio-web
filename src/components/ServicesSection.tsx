@@ -19,6 +19,7 @@ import {
   Cloud
 } from 'lucide-react';
 import { useScrollReveal, useSmoothScroll } from '@/hooks/useAnimations';
+import SectionBackground from './SectionBackground';
 
 const SERVICES = [
   {
@@ -336,7 +337,8 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="section-spacing-lg relative">
-      <div className="container-premium">
+      <SectionBackground variant="services" />
+      <div className="container-premium relative z-10">
         {/* Section Header */}
         <div ref={headerRef} className="max-w-2xl mb-14 lg:mb-18">
           <motion.div

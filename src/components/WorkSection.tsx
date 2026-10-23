@@ -20,6 +20,7 @@ import {
   Award
 } from 'lucide-react';
 import { useScrollReveal, useSmoothScroll } from '@/hooks/useAnimations';
+import SectionBackground from './SectionBackground';
 
 const CATEGORIES = ['All', 'Web Applications', 'Platforms & IoT', 'Brand'];
 
@@ -763,7 +764,8 @@ export default function WorkSection() {
 
   return (
     <section id="work" className="section-spacing-lg relative bg-bg-secondary/40 border-t border-border-default">
-      <div className="container-premium">
+      <SectionBackground variant="work" />
+      <div className="container-premium relative z-10">
         {/* Section Header */}
         <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
           <div className="max-w-xl">
