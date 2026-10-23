@@ -9,7 +9,8 @@ import {
   Activity, 
   Lock, 
   X,
-  Award
+  Award,
+  ChevronDown
 } from 'lucide-react';
 import { useScrollReveal, useSmoothScroll } from '@/hooks/useAnimations';
 import SectionBackground from './SectionBackground';
@@ -403,6 +404,7 @@ function ProjectCard({
   index: number;
 }) {
   const { ref } = useScrollReveal(0.1);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <motion.div
@@ -523,10 +525,36 @@ function ProjectCard({
                 {project.tagline}
               </p>
 
-              {/* Description */}
-              <p className="text-text-secondary text-sm leading-relaxed mb-5">
-                {project.description}
-              </p>
+              {/* Expandable System Description */}
+              <div className="mb-4">
+                <button
+                  type="button"
+                  onClick={() => setIsExpanded((prev) => !prev)}
+                  className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-text-muted hover:text-text-primary py-1 px-2.5 rounded-full bg-bg-secondary/70 hover:bg-bg-secondary border border-border-default hover:border-border-strong transition-all duration-200 cursor-pointer select-none active:scale-95 group/desc-btn"
+                  aria-expanded={isExpanded}
+                >
+                  <span className={`w-1.5 h-1.5 rounded-full transition-colors ${isExpanded ? 'bg-indigo-500 shadow-[0_0_8px_#6366f1]' : 'bg-text-muted/60'}`} />
+                  <span>{isExpanded ? 'Hide Description' : 'View Description'}</span>
+                  <ChevronDown size={12} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180 text-text-primary' : 'text-text-muted'}`} />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      key="desc-body"
+                      initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                      animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+                      exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-text-secondary text-xs sm:text-[13px] leading-relaxed p-3 rounded-xl bg-bg-secondary/60 border border-border-default/60 text-left">
+                        {project.description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             <div>
