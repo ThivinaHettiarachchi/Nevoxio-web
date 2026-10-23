@@ -217,18 +217,6 @@ export default function SectionBackground({ variant }: SectionBackgroundProps) {
               background: 'radial-gradient(circle, rgba(99,102,241,0.35) 0%, rgba(244,63,94,0.18) 50%, transparent 75%)',
             }}
           />
-
-          {/* Floating Starlight Nodes */}
-          <div className="absolute top-[25%] right-[15%] flex items-center justify-center animate-particle-float" style={{ animationDelay: '-1.5s' }}>
-            <span className="w-3 h-3 rounded-full bg-indigo-400 shadow-[0_0_12px_#818cf8]" />
-            <span className="absolute w-6 h-6 rounded-full border border-indigo-400/40 animate-ping" />
-          </div>
-          <div className="absolute bottom-[30%] right-[30%] flex items-center justify-center animate-particle-float" style={{ animationDelay: '-3.5s' }}>
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-400 shadow-[0_0_10px_#fb7185]" />
-          </div>
-          <div className="absolute bottom-[18%] left-[25%] flex items-center justify-center animate-particle-float" style={{ animationDelay: '-5s' }}>
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
-          </div>
         </>
       )}
     </div>

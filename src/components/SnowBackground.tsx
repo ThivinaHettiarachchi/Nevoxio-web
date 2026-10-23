@@ -25,11 +25,11 @@ export const SNOW_CONFIG = {
   maxOpacity: 0.55,
 
   // Total snowflakes on screen
-  desktopCount: 100,
-  mobileCount: 45,
+  desktopCount: 40,
+  mobileCount: 20,
 
   // Speed multiplier (lower = slower and calmer)
-  speedMultiplier: 0.8,
+  speedMultiplier: 0.5,
 };
 
 export default function SnowBackground() {
@@ -62,15 +62,37 @@ export default function SnowBackground() {
       attributeFilter: ['data-theme'],
     });
 
-    // Handle scroll to fade in snow only after leaving hero
+    // Handle scroll to fade in snow only between Hero and Contact section
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const heroThreshold = window.innerHeight * 0.55;
 
+      // 1. If at Hero section: keep snow canvas hidden
       if (scrollY <= heroThreshold * 0.4) {
         setOpacity(0);
-      } else if (scrollY < heroThreshold) {
-        // Smooth linear ramp from 0 to maxOpacity
+        return;
+      }
+
+      // 2. Check Contact section position: remove snow canvas in Contact & Footer area
+      const contactEl = document.getElementById('contact');
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        const windowH = window.innerHeight;
+
+        // Fully inside Contact section or below it: completely 0 opacity
+        if (rect.top <= windowH * 0.2) {
+          setOpacity(0);
+          return;
+        } else if (rect.top < windowH * 0.8) {
+          // Smooth fade-out as Contact section scrolls into view
+          const fadeOutProgress = Math.max(0, (rect.top - windowH * 0.2) / (windowH * 0.6));
+          setOpacity(fadeOutProgress * SNOW_CONFIG.maxOpacity);
+          return;
+        }
+      }
+
+      // 3. Smooth fade-in transition leaving the Hero section
+      if (scrollY < heroThreshold) {
         const progress = (scrollY - heroThreshold * 0.4) / (heroThreshold * 0.6);
         setOpacity(Math.min(SNOW_CONFIG.maxOpacity, Math.max(0, progress * SNOW_CONFIG.maxOpacity)));
       } else {
