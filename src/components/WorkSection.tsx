@@ -473,40 +473,34 @@ function ProjectCard({
             </span>
           </div>
 
-          {/* Real Production Screenshot Viewport with Hover Inspect */}
-          <div className="relative w-full h-[220px] sm:h-[240px] overflow-hidden bg-bg-secondary/30 group/viewport">
+          {/* Production Screenshot Viewport - Clicking picture redirects directly to live site */}
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative block w-full h-[220px] sm:h-[240px] overflow-hidden bg-bg-secondary/30 group/viewport cursor-pointer"
+            aria-label={`Open ${project.title} live system in new tab`}
+          >
             <Image
               src={project.image}
               alt={`${project.title} Screenshot`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              className="object-cover object-top transition-transform duration-700 ease-out group-hover/viewport:scale-105"
               priority={index < 3}
             />
 
             {/* Subtle gradient vignette to blend image with card */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent opacity-0 group-hover/viewport:opacity-100 transition-opacity duration-300" />
 
-            {/* Floating Inspect & Live Actions on Hover */}
-            <div className="absolute inset-0 flex items-center justify-center gap-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 backdrop-blur-[2px]">
-              <button
-                onClick={() => onInspect(project)}
-                className="px-3.5 py-1.5 rounded-full bg-white/95 text-neutral-900 text-xs font-semibold shadow-lg hover:bg-white transition-all transform hover:scale-105 inline-flex items-center gap-1.5 cursor-pointer"
-              >
-                <Maximize2 size={12} />
-                <span>Inspect Case</span>
-              </button>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-1.5 rounded-full bg-neutral-900/90 dark:bg-white/90 text-white dark:text-neutral-900 text-xs font-semibold shadow-lg hover:opacity-95 transition-all transform hover:scale-105 inline-flex items-center gap-1.5"
-              >
-                <span>Live Site</span>
+            {/* Floating Live Site Action Pill on Hover */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/viewport:opacity-100 transition-all duration-300 bg-black/25 backdrop-blur-[2px]">
+              <span className="px-4 py-2 rounded-full bg-white text-neutral-950 dark:bg-white dark:text-neutral-900 text-xs font-semibold shadow-xl border border-white/20 transition-transform duration-300 transform scale-95 group-hover/viewport:scale-100 inline-flex items-center gap-1.5 pointer-events-none">
+                <span>Visit Live Site</span>
                 <ExternalLink size={12} />
-              </a>
+              </span>
             </div>
-          </div>
+          </a>
 
           {/* Content Body */}
           <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
