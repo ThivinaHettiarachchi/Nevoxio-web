@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useScrollReveal } from '@/hooks/useAnimations';
 import { Search, PenTool, Code, Rocket, CheckCircle } from 'lucide-react';
 import SectionBackground from './SectionBackground';

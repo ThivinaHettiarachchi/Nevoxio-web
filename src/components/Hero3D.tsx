@@ -522,28 +522,33 @@ function AtmosphericLimb({ isDark }: { isDark: boolean }) {
 }
 
 /* ── 6. Cosmic Space Dust & Star Particles ── */
+const STAR_FIELD_POINTS = (() => {
+  const pos: number[] = [];
+  const count = 420;
+  let seed = 42;
+  const pseudoRandom = () => {
+    seed = (seed * 16807) % 2147483647;
+    return (seed - 1) / 2147483646;
+  };
+  for (let i = 0; i < count; i++) {
+    const radius = GLOBE_RADIUS * (1.5 + pseudoRandom() * 2.4);
+    const theta = pseudoRandom() * Math.PI * 2;
+    const phi = Math.acos(pseudoRandom() * 2 - 1);
+
+    pos.push(
+      radius * Math.sin(phi) * Math.cos(theta),
+      radius * Math.sin(phi) * Math.sin(theta),
+      radius * Math.cos(phi)
+    );
+  }
+  return new Float32Array(pos);
+})();
+
 function StarField({ isDark }: { isDark: boolean }) {
-  const points = useMemo(() => {
-    const pos: number[] = [];
-    const count = 420;
-    for (let i = 0; i < count; i++) {
-      const radius = GLOBE_RADIUS * (1.5 + Math.random() * 2.4);
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(Math.random() * 2 - 1);
-
-      pos.push(
-        radius * Math.sin(phi) * Math.cos(theta),
-        radius * Math.sin(phi) * Math.sin(theta),
-        radius * Math.cos(phi)
-      );
-    }
-    return new Float32Array(pos);
-  }, []);
-
   return (
     <points>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[points, 3]} />
+        <bufferAttribute attach="attributes-position" args={[STAR_FIELD_POINTS, 3]} />
       </bufferGeometry>
       <pointsMaterial
         size={isDark ? 0.026 : 0.018}

@@ -7,16 +7,8 @@ import {
   ArrowUpRight, 
   ExternalLink, 
   Activity, 
-  Sparkles, 
-  Compass, 
-  ShieldCheck, 
-  Zap, 
   Lock, 
-  Maximize2, 
   X,
-  Layers,
-  CheckCircle2,
-  Users,
   Award
 } from 'lucide-react';
 import { useScrollReveal, useSmoothScroll } from '@/hooks/useAnimations';
@@ -405,14 +397,12 @@ function TileLaserBorder({
 /* ── Individual Project Card with Smooth Moving Laser Border Glow ── */
 function ProjectCard({ 
   project, 
-  index, 
-  onInspect 
+  index
 }: { 
   project: ProjectData; 
   index: number;
-  onInspect: (project: ProjectData) => void;
 }) {
-  const { ref, isVisible } = useScrollReveal(0.1);
+  const { ref } = useScrollReveal(0.1);
 
   return (
     <motion.div
@@ -827,7 +817,6 @@ export default function WorkSection() {
                 key={project.id} 
                 project={project} 
                 index={i}
-                onInspect={(p) => setInspectedProject(p)}
               />
             ))}
           </AnimatePresence>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ArrowUpRight,
   Globe,
@@ -12,13 +12,10 @@ import {
   Play,
   CheckCircle2,
   Zap,
-  ShieldCheck,
   Activity,
-  Layers,
-  Database,
-  Cloud
+  Layers
 } from 'lucide-react';
-import { useScrollReveal, useSmoothScroll } from '@/hooks/useAnimations';
+import { useScrollReveal } from '@/hooks/useAnimations';
 import SectionBackground from './SectionBackground';
 
 const SERVICES = [

@@ -21,24 +21,26 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem('nevoxio-theme') as Theme | null;
-      if (stored === 'light') {
-        setTheme('light');
-        document.documentElement.setAttribute('data-theme', 'light');
-        document.documentElement.classList.remove('dark');
-      } else {
+    queueMicrotask(() => {
+      try {
+        const stored = localStorage.getItem('nevoxio-theme') as Theme | null;
+        if (stored === 'light') {
+          setTheme('light');
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.classList.remove('dark');
+        } else {
+          setTheme('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.classList.add('dark');
+        }
+      } catch {
+        // fallback
         setTheme('dark');
         document.documentElement.setAttribute('data-theme', 'dark');
         document.documentElement.classList.add('dark');
       }
-    } catch {
-      // fallback
-      setTheme('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
-      document.documentElement.classList.add('dark');
-    }
-    setMounted(true);
+      setMounted(true);
+    });
   }, []);
 
   const toggleTheme = useCallback(() => {

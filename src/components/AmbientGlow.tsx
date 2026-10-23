@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
 
+const emptySubscribe = () => () => {};
+
 export default function AmbientGlow() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
@@ -13,8 +15,6 @@ export default function AmbientGlow() {
   const springY = useSpring(mouseY, { stiffness: 120, damping: 25, mass: 0.2 });
 
   useEffect(() => {
-    setMounted(true);
-
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);

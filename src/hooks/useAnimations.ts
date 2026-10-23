@@ -10,7 +10,7 @@ export function useScrollReveal(threshold = 0.15) {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      setIsVisible(true);
+      queueMicrotask(() => setIsVisible(true));
       return;
     }
 
@@ -115,7 +115,7 @@ export function useReducedMotion() {
 
   useEffect(() => {
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mql.matches);
+    queueMicrotask(() => setReduced(mql.matches));
 
     const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
     mql.addEventListener('change', handler);
