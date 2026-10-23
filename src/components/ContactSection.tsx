@@ -58,7 +58,7 @@ export default function ContactSection() {
       );
 
       // Open mailto
-      window.location.href = `mailto:hello@nevoxio.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:nevoxioitsolutions@gmail.com?subject=${subject}&body=${body}`;
 
       // Show success after brief delay
       setTimeout(() => {
@@ -128,8 +128,8 @@ export default function ContactSection() {
                 <div className="w-8 h-8 rounded-full border border-border-default flex items-center justify-center">
                   <span className="text-xs">@</span>
                 </div>
-                <a href="mailto:hello@nevoxio.com" className="text-sm text-text-muted hover:text-text-primary transition-colors">
-                  hello@nevoxio.com
+                <a href="mailto:nevoxioitsolutions@gmail.com" className="text-sm text-text-muted hover:text-text-primary transition-colors">
+                  nevoxioitsolutions@gmail.com
                 </a>
               </div>
             </motion.div>

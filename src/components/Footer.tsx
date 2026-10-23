@@ -13,9 +13,9 @@ const NAV_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
+  { label: 'Email', href: 'mailto:nevoxioitsolutions@gmail.com' },
+  { label: 'GitHub', href: 'https://github.com/ThivinaHettiarachchi/Nevoxio-web' },
   { label: 'LinkedIn', href: '#' },
-  { label: 'GitHub', href: '#' },
-  { label: 'Twitter', href: '#' },
 ];
 
 export default function Footer() {
@@ -48,6 +48,15 @@ export default function Footer() {
               <p className="text-sm text-text-secondary font-light leading-relaxed max-w-sm mt-3">
                 Intelligent digital systems and high-impact technology engineered to endure long after the screen turns off.
               </p>
+              <div className="mt-4 flex items-center gap-2">
+                <span className="text-[10px] tracking-[0.16em] uppercase text-text-muted">Inquiries:</span>
+                <a 
+                  href="mailto:nevoxioitsolutions@gmail.com"
+                  className="text-xs font-mono text-text-secondary hover:text-text-primary transition-colors underline decoration-border-default hover:decoration-text-primary"
+                >
+                  nevoxioitsolutions@gmail.com
+                </a>
+              </div>
             </div>
 
             {/* Navigation */}
