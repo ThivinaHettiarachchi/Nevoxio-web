@@ -207,7 +207,6 @@ export default function SectionBackground({ variant }: SectionBackgroundProps) {
             <div className="absolute inset-0 rounded-full border-2 border-indigo-500/70 shadow-[0_0_15px_rgba(99,102,241,0.5)] animate-radar-ripple" />
             <div className="absolute inset-0 rounded-full border-2 border-cyan-400/60 shadow-[0_0_15px_rgba(6,182,212,0.4)] animate-radar-ripple" style={{ animationDelay: '-2.5s' }} />
             <div className="absolute inset-0 rounded-full border-2 border-indigo-400/50 animate-radar-ripple" style={{ animationDelay: '-5s' }} />
-            <div className="absolute left-1/2 top-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500 shadow-[0_0_15px_#6366f1]" />
           </div>
 
           {/* Focal Atmospheric Glow Behind Form */}
