@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo, useEffect } from 'react';
+import { useRef, useMemo, useEffect, type ReactNode } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useTheme } from './ThemeProvider';
@@ -391,6 +391,18 @@ function NetworkArc({
     return { curve: bezier, geometry: geo };
   }, [startHub, endHub]);
 
+  const lineObject = useMemo(() => {
+    const material = new THREE.LineBasicMaterial({
+      color: isDark ? '#ff2d55' : '#e11d48',
+      transparent: true,
+      opacity: isDark ? 0.6 : 0.42,
+      blending: isDark ? THREE.AdditiveBlending : THREE.NormalBlending,
+      linewidth: 1.5,
+      depthWrite: false,
+    });
+    return new THREE.Line(geometry, material);
+  }, [geometry, isDark]);
+
   useFrame((state) => {
     const t = state.clock.elapsedTime * 0.6;
     const speed = 0.55 + (index % 5) * 0.15;
@@ -409,16 +421,7 @@ function NetworkArc({
   return (
     <group>
       {/* 3D Curved Glowing Arc Line */}
-      <line geometry={geometry}>
-        <lineBasicMaterial
-          color={isDark ? '#ff2d55' : '#e11d48'}
-          transparent
-          opacity={isDark ? 0.6 : 0.42}
-          blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
-          linewidth={1.5}
-          depthWrite={false}
-        />
-      </line>
+      <primitive object={lineObject} />
 
       {/* Travelling Photon Pulse 1 */}
       <mesh ref={photon1Ref}>
@@ -448,7 +451,7 @@ function NetworkArc({
 /* ── 4. Cyber Latitudinal & Longitudinal Orbital Rings ── */
 function CyberGridRings({ isDark }: { isDark: boolean }) {
   const rings = useMemo(() => {
-    const list: JSX.Element[] = [];
+    const list: ReactNode[] = [];
     const ringColor = isDark ? '#38bdf8' : '#64748b';
     const ringOpacity = isDark ? 0.16 : 0.1;
 
