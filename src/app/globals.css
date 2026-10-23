@@ -629,3 +629,124 @@ html[data-theme="dark"] .hero-btn-secondary:hover,
   background-color: rgba(250, 247, 242, 0.12) !important;
   border-color: rgba(250, 247, 242, 0.28) !important;
 }
+
+/* --- Ambient Background Animations --- */
+@keyframes ambient-drift-slow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(70px, -45px, 0) scale(1.15);
+  }
+  66% {
+    transform: translate3d(-50px, 60px, 0) scale(0.92);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ambient-drift-reverse {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-60px, 50px, 0) scale(0.9);
+  }
+  66% {
+    transform: translate3d(60px, -35px, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ambient-particle-float {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-40px) scale(1.25);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.35;
+  }
+}
+
+@keyframes laser-grid-scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes radar-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.15);
+    opacity: 0.85;
+  }
+  40% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.75);
+    opacity: 0;
+  }
+}
+
+@keyframes wave-contour {
+  0% {
+    stroke-dashoffset: 0;
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+  100% {
+    stroke-dashoffset: -500;
+    transform: translateX(0);
+  }
+}
+
+.animate-ambient-drift {
+  animation: ambient-drift-slow 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-ambient-drift-rev {
+  animation: ambient-drift-reverse 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-particle-float {
+  animation: ambient-particle-float 5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-laser-scan {
+  animation: laser-grid-scan 7s linear infinite;
+  will-change: top, opacity;
+}
+
+.animate-radar-ripple {
+  animation: radar-ripple 7s cubic-bezier(0.1, 0.4, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.animate-wave-contour {
+  animation: wave-contour 14s ease-in-out infinite;
+  will-change: transform, stroke-dashoffset;
+}
