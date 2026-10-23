@@ -100,26 +100,29 @@ export default function ProcessSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 onClick={() => setActiveStep(i)}
-                className={`p-6 sm:p-7 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                onMouseEnter={() => setActiveStep(i)}
+                className={`group p-6 sm:p-7 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                   isCurrent
-                    ? 'bg-card-bg border-indigo-500/50 shadow-lg ring-1 ring-indigo-500/30'
-                    : 'bg-card-bg border-border-default hover:border-border-strong'
+                    ? 'bg-card-bg border-indigo-500/50 shadow-lg shadow-indigo-500/10 ring-1 ring-indigo-500/30 -translate-y-1'
+                    : 'bg-card-bg border-border-default hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/10 hover:ring-1 hover:ring-indigo-500/30 hover:-translate-y-1'
                 }`}
               >
                 <div>
                   {/* Top: Step Number & Icon */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-mono font-bold tracking-widest text-text-muted">
+                    <span className={`text-xs font-mono font-bold tracking-widest transition-colors duration-300 ${
+                      isCurrent ? 'text-indigo-600 dark:text-indigo-400' : 'text-text-muted group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
+                    }`}>
                       {step.number}
                     </span>
                     <div
-                      className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-colors ${
+                      className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all duration-300 ${
                         isCurrent
-                          ? 'bg-indigo-500/10 border-indigo-500/40 text-indigo-500'
-                          : 'bg-bg-secondary border-border-default text-text-muted'
+                          ? 'bg-indigo-500/10 border-indigo-500/40 text-indigo-500 shadow-xs'
+                          : 'bg-bg-secondary border-border-default text-text-muted group-hover:bg-indigo-500/10 group-hover:border-indigo-500/40 group-hover:text-indigo-500'
                       }`}
                     >
-                      <Icon size={18} />
+                      <Icon size={18} className="transition-transform duration-300 group-hover:scale-110" />
                     </div>
                   </div>
 
