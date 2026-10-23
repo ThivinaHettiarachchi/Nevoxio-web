@@ -20,7 +20,7 @@ const SECTION_IDS = ['hero', ...NAV_ITEMS.map(item => item.id)];
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const scrollTo = useSmoothScroll();
-  const activeSection = useActiveSection(SECTION_IDS);
+  const { activeSection, setActiveSection } = useActiveSection(SECTION_IDS);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -43,9 +43,10 @@ export default function Navigation() {
   }, [isMobileMenuOpen]);
 
   const handleNavClick = useCallback((id: string) => {
+    setActiveSection(id);
     scrollTo(id);
     setIsMobileMenuOpen(false);
-  }, [scrollTo]);
+  }, [scrollTo, setActiveSection]);
 
   return (
     <>
