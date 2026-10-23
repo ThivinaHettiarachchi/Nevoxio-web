@@ -8,11 +8,13 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 import AmbientGlow from '@/components/AmbientGlow';
+import SnowBackground from '@/components/SnowBackground';
 
 export default function Home() {
   return (
     <main>
       <AmbientGlow />
+      <SnowBackground />
       <Navigation />
       <HeroSection />
       <ServicesSection />

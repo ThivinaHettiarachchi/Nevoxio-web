@@ -36,7 +36,7 @@ export default function AboutSection() {
   const { ref: principlesRef, isVisible: principlesVisible } = useScrollReveal(0.1);
 
   return (
-    <section id="about" className="section-spacing-lg relative border-t border-border-default bg-bg-primary">
+    <section id="about" className="section-spacing-lg relative border-t border-border-default bg-bg-secondary/40">
       <SectionBackground variant="about" />
       <div className="container-premium relative z-10">
         {/* Eyebrow with Fine Horizontal Lines */}
