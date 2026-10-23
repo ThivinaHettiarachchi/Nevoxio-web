@@ -16,6 +16,22 @@ interface Snowflake {
   colorType: 'white' | 'ice' | 'cyan';
 }
 
+// =========================================================================
+// ❄️ SNOW CONTROLS — Tweak opacity, density, and speed here:
+// =========================================================================
+export const SNOW_CONFIG = {
+  // Master canvas opacity when scrolled (0.0 = invisible, 1.0 = bright)
+  // Recommended range: 0.35 to 0.65
+  maxOpacity: 0.55,
+
+  // Total snowflakes on screen
+  desktopCount: 100,
+  mobileCount: 45,
+
+  // Speed multiplier (lower = slower and calmer)
+  speedMultiplier: 0.8,
+};
+
 export default function SnowBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [opacity, setOpacity] = useState(0);
@@ -54,11 +70,11 @@ export default function SnowBackground() {
       if (scrollY <= heroThreshold * 0.4) {
         setOpacity(0);
       } else if (scrollY < heroThreshold) {
-        // Smooth linear ramp from 0 to 1
+        // Smooth linear ramp from 0 to maxOpacity
         const progress = (scrollY - heroThreshold * 0.4) / (heroThreshold * 0.6);
-        setOpacity(Math.min(1, Math.max(0, progress)));
+        setOpacity(Math.min(SNOW_CONFIG.maxOpacity, Math.max(0, progress * SNOW_CONFIG.maxOpacity)));
       } else {
-        setOpacity(1);
+        setOpacity(SNOW_CONFIG.maxOpacity);
       }
     };
 
@@ -86,18 +102,18 @@ export default function SnowBackground() {
     // Generate snowflakes
     let flakes: Snowflake[] = [];
     const initFlakes = () => {
-      const count = width < 768 ? 60 : 130;
+      const count = width < 768 ? SNOW_CONFIG.mobileCount : SNOW_CONFIG.desktopCount;
       flakes = [];
 
       for (let i = 0; i < count; i++) {
-        const radius = Math.random() * 2.6 + 0.8; // 0.8px to 3.4px
-        const isForeground = radius > 2.3;
+        const radius = Math.random() * 2.4 + 0.8; // 0.8px to 3.2px
+        const isForeground = radius > 2.2;
 
         flakes.push({
           x: Math.random() * width,
           y: Math.random() * height,
           radius,
-          speedY: isForeground ? Math.random() * 0.9 + 1.1 : Math.random() * 0.6 + 0.4,
+          speedY: (isForeground ? Math.random() * 0.7 + 0.9 : Math.random() * 0.5 + 0.35) * SNOW_CONFIG.speedMultiplier,
           speedX: (Math.random() - 0.5) * 0.3,
           swayAngle: Math.random() * Math.PI * 2,
           swaySpeed: Math.random() * 0.02 + 0.01,
