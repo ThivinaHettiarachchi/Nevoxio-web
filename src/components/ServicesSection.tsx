@@ -85,7 +85,7 @@ function ServiceLiveDemo({ type }: { type: string }) {
 
   if (type === 'web-perf') {
     return (
-      <div className="mt-5 p-3.5 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
+      <div className="mt-3.5 p-3 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
         <div className="flex items-center justify-between pb-2 mb-3 border-b border-border-default">
           <div className="flex items-center gap-1.5 text-[10px] font-mono text-text-muted">
             <Terminal size={12} className="text-indigo-500" />
@@ -134,7 +134,7 @@ function ServiceLiveDemo({ type }: { type: string }) {
 
   if (type === 'mobile-app') {
     return (
-      <div className="mt-5 p-3.5 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
+      <div className="mt-3.5 p-3 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
         <div className="flex items-center justify-between pb-2 mb-2 border-b border-border-default">
           <span className="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-semibold flex items-center gap-1">
             <Smartphone size={11} /> iOS & Android Sandbox
@@ -172,7 +172,7 @@ function ServiceLiveDemo({ type }: { type: string }) {
 
   if (type === 'software-arch') {
     return (
-      <div className="mt-5 p-3.5 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
+      <div className="mt-3.5 p-3 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
         <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-border-default">
           <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
             <Layers size={11} /> Cloud Architecture Bus
@@ -208,7 +208,7 @@ function ServiceLiveDemo({ type }: { type: string }) {
 
   // DevOps telemetry
   return (
-    <div className="mt-5 p-3.5 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
+    <div className="mt-3.5 p-3 rounded-xl border border-border-default bg-bg-secondary/70 backdrop-blur-sm text-left">
       <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-border-default">
         <span className="text-[10px] font-mono text-amber-600 dark:text-amber-400 font-semibold flex items-center gap-1">
           <Activity size={11} className="text-amber-500" /> Infrastructure Telemetry
@@ -268,45 +268,45 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[number]; ind
             : 'perspective(1000px) rotateX(0) rotateY(0)',
           transition: isHovered ? 'none' : 'transform 0.5s ease-out',
         }}
-        className="group relative p-7 sm:p-9 rounded-2xl border border-border-default
+        className="group relative p-5 sm:p-6 rounded-2xl border border-border-default
           bg-card-bg hover:border-border-strong
           transition-all duration-300 cursor-default h-full flex flex-col justify-between shadow-xs hover:shadow-xl"
       >
         <div>
           {/* Top row: Number & Icon */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-3">
             <span className="text-[0.6875rem] font-mono font-bold tracking-[0.2em] text-text-muted">
               {service.number}
             </span>
 
             <div
-              className={`w-12 h-12 flex items-center justify-center rounded-xl border ${service.accentBg} transition-transform duration-300 group-hover:scale-110`}
+              className={`w-10 h-10 flex items-center justify-center rounded-xl border ${service.accentBg} transition-transform duration-300 group-hover:scale-110`}
             >
-              <Icon size={22} strokeWidth={1.5} className={service.accentClass} />
+              <Icon size={19} strokeWidth={1.5} className={service.accentClass} />
             </div>
           </div>
 
           {/* Category subtitle */}
-          <span className="text-[0.6875rem] font-semibold tracking-wider uppercase text-text-muted block mb-1.5">
+          <span className="text-[0.6875rem] font-semibold tracking-wider uppercase text-text-muted block mb-1">
             {service.category}
           </span>
 
           {/* Title */}
-          <h3 className="text-xl font-bold tracking-tight text-text-primary mb-3">
+          <h3 className="text-lg sm:text-xl font-bold tracking-tight text-text-primary mb-2">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="body-text text-text-secondary text-sm leading-relaxed mb-6 font-normal">
+          <p className="body-text text-text-secondary text-xs sm:text-[13px] leading-relaxed mb-3.5 font-normal">
             {service.description}
           </p>
 
           {/* Capabilities tags */}
-          <div className="flex flex-wrap gap-1.5 mb-2">
+          <div className="flex flex-wrap gap-1.5 mb-1.5">
             {service.capabilities.map((cap) => (
               <span
                 key={cap}
-                className="text-[0.6875rem] font-medium px-2.5 py-1 rounded-md bg-bg-secondary text-text-secondary border border-border-default"
+                className="text-[10px] sm:text-[10.5px] font-medium px-2 py-0.5 rounded-md bg-bg-secondary text-text-secondary border border-border-default"
               >
                 {cap}
               </span>
@@ -319,9 +319,9 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[number]; ind
           <ServiceLiveDemo type={service.demoType} />
 
           {/* Learn More link */}
-          <div className="mt-6 pt-4 border-t border-border-default flex items-center justify-between text-text-muted group-hover:text-text-primary transition-colors text-xs font-semibold">
+          <div className="mt-4 pt-3 border-t border-border-default flex items-center justify-between text-text-muted group-hover:text-text-primary transition-colors text-xs font-semibold">
             <span>Explore Architecture</span>
-            <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
         </div>
       </motion.div>
